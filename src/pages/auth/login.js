@@ -1,7 +1,7 @@
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate, useLocation } from "react-router-dom"
 import { Helmet } from "react-helmet";
-import { useFormik } from "formik";
+import { useFormik, Formik, Form, Field } from "formik";
 
 
 export default function Login() {
@@ -23,19 +23,6 @@ export default function Login() {
         })
     }
 
-    const { handleSubmit, handleChange, values } = useFormik({
-        initialValues: {
-            username: '',
-            password: ''
-        },
-        onSubmit: values => {
-            setUser(values)
-            navigate(location?.return_url || '/', {
-                replace: true
-            })
-        }
-    })
-
     return (
         <div>
             <Helmet>
@@ -43,13 +30,24 @@ export default function Login() {
             </Helmet>
             Login Page <br></br>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Kullanıcı Adı</label>
-                <input type="text" id="username" value={values.username} onChange={handleChange} /> <br></br>
-                <label htmlFor="password">Parola</label>
-                <input type="password" id="password" value={values.password} onChange={handleChange} /> <br></br>
-                <button type="submit">Giriş Yap</button>
-            </form>
+            <Formik initialValues={{
+                username: '',
+                password: ''
+            }} onSubmit={values => {
+                setUser(values)
+                navigate(location?.return_url || '/', {
+                    replace: true
+                })
+            }} >
+                {({ values }) => (
+                    <Form>
+                        <Field name="username" /> <br />
+                        <Field name="password" type="password" /> <br />
+                        <button type="submit">Giriş Yap</button>
+                    </Form>
+                )}
+
+            </Formik>
         </div>
     )
 }
