@@ -13,6 +13,7 @@
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.0",
     "react-scripts": "5.0.1",
     "sass": "^1.56.1",
@@ -45,7 +46,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.19",
+    "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"
   }
 }

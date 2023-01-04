@@ -20,7 +20,7 @@ export default function Contact() {
                 }}
             >
                 {({ values }) => (
-                    <Form>
+                    <Form className="p-6">
                         <Input label="Ad-Soyad" name="name" /><br/>
                         <Field component="textarea" name="about" /> <br />
                         <label>
@@ -37,7 +37,7 @@ export default function Contact() {
                             <option value="js">JavaScript</option>
                             <option value="html">HTML</option>
                         </Field><br/>
-                        <Field type="file" name="avatar" />
+                        <File label="Avatar" name="avatar" />
                         <button type="submit" disabled={!values.accept}>Gönder</button>
                     </Form>
                 )}
