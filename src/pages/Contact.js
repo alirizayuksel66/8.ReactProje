@@ -1,6 +1,8 @@
 import { Formik, Form, Field } from "formik";
 import Input from "../components/form/Input";
 import File from "../components/form/File";
+import Checkbox from "../components/form/Checkbox";
+import Textarea from "../components/form/Textarea";
 
 export default function Contact() {
     return (
@@ -22,11 +24,8 @@ export default function Contact() {
                 {({ values }) => (
                     <Form className="p-6">
                         <Input label="Ad-Soyad" name="name" /><br/>
-                        <Field component="textarea" name="about" /> <br />
-                        <label>
-                            <Field type="checkbox" name="accept" />
-                            Kuralları Kabul Ediyorum ! 
-                        </label><br/>
+                        <Textarea label="Hakkında" name="about" /> <br />
+                        <Checkbox label="Kuralları Kabul Ediyorum" name="accept" />
                         <Field component="select" name="gender">
                             <option value={1}>Kadın</option>
                             <option value={2}>Erkek</option>
@@ -39,6 +38,7 @@ export default function Contact() {
                         </Field><br/>
                         <File label="Avatar" name="avatar" />
                         <button type="submit" disabled={!values.accept}>Gönder</button>
+                        <pre>{JSON.stringify(values, null, 2)}</pre>
                     </Form>
                 )}
 

@@ -16,12 +16,13 @@ export default function File({ label, ...props}) {
     }
 
     return (
-        <label className="block w-full">
+        <div className="block w-full">
             <div className="text-sm text-gray-600 block mb-1.5">{label}</div>
-            <button type="button" onClick={fileOpen} className="px-5 inline*flex items-center gap-x-2 text-sm raounded bg-blue-50 text-blue-500 h-10">
+            <button type="button" onClick={fileOpen} className="px-5 inline-flex items-center gap-x-2 text-sm raounded bg-blue-50 text-blue-500 h-10">
                 {field.value && <>Dosya Seçildi <FiCheck size={15} /></>}
                 {!field.value && 'Dosya Seç'}
             </button>
-        </label>
+            {field.value && <button onClick={() => helpers.setValue('')} className="flex w-full text-sm underline text-gray-600">Dosyayı Kaldır</button>}
+        </div>
     )
 }
